@@ -18,9 +18,16 @@ public class Main {
                      PrintWriter pw = new PrintWriter(client.getOutputStream(), true);
                      BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()))
                 ) {
-                    String s = br.readLine();
-                    System.out.println("The info from Client: " + s + "\nClient is running on port: " + client.getPort());
-                    pw.println(client.getPort());
+                    pw.println("Hello. This is Server. Please write your name");
+                    String clientName = br.readLine();
+                    //System.out.println("Client has entered his name: " + clientName);
+                    pw.println("Are you child?");
+                    String answer = br.readLine();
+                    if (answer.equals("yes")) {
+                        pw.println("Welcome to the kids area, " + clientName + "! Let's play!");
+                    } else if (answer.equals("no")) {
+                        pw.println("Welcome to the adult zone, " + clientName + "! Have a good rest, or a good working day!");
+                    } else pw.println("Yes or no I said");
                 }
             }
         } catch (IOException e) {
